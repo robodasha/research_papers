@@ -1,3 +1,4 @@
+
 import json
 import logging
 import urllib.parse
@@ -14,12 +15,15 @@ class CrossrefResolver(object):
         self._endpoint = 'http://search.labs.crossref.org/'
         self._method = 'dois'
 
-    def _remove_non_aplha(self, str):
+    def _remove_non_aplha(self, text):
         """
-        :param str:
+        :param text:
         :return:
         """
-        return ''.join(ch for ch in str if ch.isalpha())
+        if text is None or len(text) < 1:
+            self._logger.debug('Input string was empty')
+            return ''
+        return ''.join(ch for ch in text if ch.isalpha())
 
     def resolve(self, reference_string, reference_title):
         """
@@ -30,11 +34,16 @@ class CrossrefResolver(object):
         query = urllib.parse.urlencode({'q': reference_string})
         request = urllib.parse.urljoin(self._endpoint, self._method)
         request += '?{}'.format(query)
+        self._logger.debug('CrossRef query: {}'.format(request))
         response = urllib.request.urlopen(request).read().decode('utf-8')
         if len(response) > 0:
             first_result = json.loads(response)[0]
-            result_title = self._remove_non_aplha(first_result['title'])
-            original_title = self._remove_non_aplha(reference_title)
-            if result_title.lower() == original_title.lower():
+            result_title = self._remove_non_aplha(first_result['title']).lower()
+            original_title = self._remove_non_aplha(reference_title).lower()
+            self._logger.debug('Comparing normalized titles: {}, {}'.format(
+                result_title, original_title))
+            if result_title == original_title:
+                self._logger.debug('Got a DOI: {}'.format(first_result['doi']))
                 return first_result['doi']
+        self._logger.debug('No DOI for citation: {}'.format(reference_title))
         return None

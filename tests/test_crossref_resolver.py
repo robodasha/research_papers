@@ -1,6 +1,8 @@
 
+import logging
 import unittest
 
+import crossref_resolver.logutils as logutils
 from crossref_resolver.crossref_resolver import CrossrefResolver
 
 
@@ -10,11 +12,16 @@ __email__ = 'damirah@live.com'
 
 class SimpleTests(unittest.TestCase):
 
+    def __init__(self, *args, **kwargs):
+        super(SimpleTests, self).__init__(*args, **kwargs)
+        logutils.setup_logging()
+        self._logger = logging.getLogger(__name__)
+
     def setUp(self):
-        print('Setup {0}'.format(self.__class__.__name__))
+        self._logger.info('Setup {0}'.format(self.__class__.__name__))
 
     def tearDown(self):
-        print('Tear down {0}'.format(self.__class__.__name__))
+        self._logger.info('Tear down {0}'.format(self.__class__.__name__))
 
     def test_resolve(self):
         """
