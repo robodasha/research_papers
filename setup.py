@@ -13,7 +13,7 @@ with open('README.md') as fp:
 
 setup(
     name='crossref_resolver',
-    version='0.1',
+    version='0.1.1',
     description='Resolve citations to DOIs using CrossRef API',
     long_description=description,
     license='MIT',
