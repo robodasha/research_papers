@@ -12,28 +12,28 @@ with open('README.md') as fp:
     description = fp.read()
 
 setup(
-    name='crossref_resolver',
+    name='research_papers',
     version='0.1.1',
-    description='Resolve citations to DOIs using CrossRef API',
+    description='Numerous tools for working with research papers',
     long_description=description,
     license='MIT',
-    url='https://github.com/robodasha/crossref_resolver',
+    url='https://github.com/robodasha/research_papers',
     author='Drahomira Herrmannova',
     author_email='damirah@live.com',
     classifiers=[
         'Development Status :: 4 - Beta',
         'Environment :: Console',
-        'Intended Audience :: Developers',
+        'Intended Audience :: Science/Research',
         'License :: OSI Approved :: MIT License',
         'Natural Language :: English',
-        'Programming Language :: Python :: 2',
-        'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.5',
-        'Topic :: Software Development',
+        'Topic :: Scientific/Engineering',
+        'Topic :: Text Processing',
         'Topic :: Utilities'
     ],
-    keywords='crossref doi citation',
-    packages=['crossref_resolver'],
-    install_requires=['wheel', 'configparser', 'ordereddict']
+    keywords='text mining',
+    packages=['research_papers'],
+    install_requires=['wheel', 'configparser', 'ordereddict', 'mendeley',
+                      'pdfminer3k']
 )

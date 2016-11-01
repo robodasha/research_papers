@@ -2,18 +2,17 @@
 import logging
 import unittest
 
-import crossref_resolver.logutils as logutils
-from crossref_resolver.crossref_resolver import CrossrefResolver
-
+import research_papers.logutils as logutils
+from research_papers.tools.crossref_resolver import CrossrefResolver
 
 __author__ = 'robodasha'
 __email__ = 'damirah@live.com'
 
 
-class SimpleTests(unittest.TestCase):
+class TestCrossrefResolver(unittest.TestCase):
 
     def __init__(self, *args, **kwargs):
-        super(SimpleTests, self).__init__(*args, **kwargs)
+        super(TestCrossrefResolver, self).__init__(*args, **kwargs)
         logutils.setup_logging()
         self._logger = logging.getLogger(__name__)
 

@@ -1,3 +1,5 @@
 configparser
+mendeley
 ordereddict
+pdfminer3k
 wheel

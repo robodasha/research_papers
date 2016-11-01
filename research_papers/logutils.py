@@ -6,7 +6,6 @@ import os
 import json
 import math
 import logging
-import configparser
 from logging.config import dictConfig
 
 
@@ -22,13 +21,9 @@ def setup_logging(default_path='logging.json', default_level=logging.DEBUG):
     :return: None
     """
     path = default_path
-    cfg = configparser.ConfigParser()
-    cfg.read('config.ini')
     if os.path.exists(path):
         with open(path, 'rt') as f:
             logging_config = json.load(f)
-        logging_config['handlers']['file']['filename'] = \
-            os.path.join(cfg['paths']['log'], 'debug.log')
         dictConfig(logging_config)
     logging.basicConfig(level=default_level)
     return
