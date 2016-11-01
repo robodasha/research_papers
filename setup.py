@@ -33,7 +33,7 @@ setup(
         'Topic :: Utilities'
     ],
     keywords='text mining',
-    packages=['research_papers'],
+    packages=['research_papers', 'research_papers.tools'],
     install_requires=['wheel', 'configparser', 'ordereddict', 'mendeley',
                       'pdfminer3k']
 )
