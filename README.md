@@ -8,3 +8,7 @@ Various tools for processing research papers:
  which allows resolving citations to DOIs.
  * A wrapper for Mendeley API (http://dev.mendeley.com) which allows 
  getting paper metadata by DOI and by paper title and year
+ 
+## Installation
+
+`pip install git+https://github.com/robodasha/research_papers`
