@@ -40,8 +40,8 @@ class ParscitExtractor(object):
         :raise: raises IOError in case the given path doesn't exist
         """
         # check if the file exists to avoid unnecessary allocation of resources
-        if not os.path.exists(text_path):
-            msg = 'File {} does not exist'.format(text_path)
+        if not os.path.exists(text_path) or os.path.getsize(text_path) <= 0:
+            msg = 'File {} does not exist or is empty'.format(text_path)
             self._logger.error(msg)
             raise IOError(msg)
 
