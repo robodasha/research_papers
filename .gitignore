@@ -1,6 +1,3 @@
 *.pyc
-*.ini
-*.json
 __pycache__/
-log/
 .idea/
