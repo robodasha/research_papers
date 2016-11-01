@@ -37,13 +37,12 @@ class ParscitExtractor(object):
         (e.g. for text file xyz.txt the citations will be stored in xyz.xml).
         :param text_path: path to the text file to extract citations from
         :return: None
-        :raise: raises IOError in case the given path doesn't exist
         """
         # check if the file exists to avoid unnecessary allocation of resources
         if not os.path.exists(text_path) or os.path.getsize(text_path) <= 0:
             msg = 'File {} does not exist or is empty'.format(text_path)
-            self._logger.error(msg)
-            raise IOError(msg)
+            self._logger.warn(msg)
+            return
 
         text_fname = os.path.basename(text_path)
         self._logger.info('Extracting citations from {}'.format(text_fname))
