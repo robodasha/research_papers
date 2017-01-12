@@ -13,7 +13,7 @@ with open('README.md') as fp:
 
 setup(
     name='research_papers',
-    version='0.1.1',
+    version='0.1.2',
     description='Numerous tools for working with research papers',
     long_description=description,
     license='MIT',

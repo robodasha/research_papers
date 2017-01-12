@@ -10,6 +10,15 @@ __email__ = 'damirah@live.com'
 
 class MendeleyResolver(object):
 
+    FIELDS = ['id', 'title', 'type', 'abstract', 'source', 'year', 'authors',
+              'identifiers', 'keywords', 'link', 'month', 'day', 'revision',
+              'pages', 'volume', 'issue', 'websites', 'publisher', 'city',
+              'edition', 'institution', 'series', 'chapter', 'editors',
+              'file_attached', 'reader_count',
+              'reader_count_by_academic_status',
+              'reader_count_by_subdiscipline', 'reader_count_by_country',
+              'group_count']
+
     def __init__(self, client_id, secret):
         self._logger = logging.getLogger(__name__)
         mendeley_object = Mendeley(client_id, secret)
@@ -29,7 +38,8 @@ class MendeleyResolver(object):
     def get_document_by_doi(self, doi):
         """
         :param doi:
-        :return:
+        :return: document metadata (all possible fields are listed in
+                 MendeleyResolver.FIELDS) or None if document wasn't found
         """
         self._logger.info('Resolving document from Mendeley by DOI: {}'
                           .format(doi))
@@ -45,7 +55,8 @@ class MendeleyResolver(object):
         """
         :param title:
         :param year:
-        :return:
+        :return: document metadata (all possible fields are listed in
+                 MendeleyResolver.FIELDS) or None if document wasn't found
         """
         self._logger.info('Resolving document from Mendeley by title and year: '
                           '{}, {}'.format(title, year))
